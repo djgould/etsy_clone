@@ -1,0 +1,15 @@
+<%= link_to "New Store", new_store_path %>
+<% if user_signed_in? %>
+	<%= link_to 'Profile', user_path(current_user) %>
+<% else %>
+ <%= link_to 'Sign In', new_user_session_path %>
+<% end %>
+
+<ul>
+	<% @stores.each do |store| %>
+	<li>
+		<h4><%= link_to store.name, store_path(store) %> </h4>
+		<p><%= store.description %></p>
+	</li>
+	<% end %>
+</ul>

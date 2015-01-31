@@ -1,0 +1,9 @@
+<h1><%= @user.email %></h1>
+<ul>
+	<% @stores.each do |store| %>
+		<li>
+			<%= link_to store.name, store_path(store) %>
+		</li>
+	<% end %>
+</ul>
+
