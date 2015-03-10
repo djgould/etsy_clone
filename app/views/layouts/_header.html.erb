@@ -1,0 +1,24 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to "Etsy Clone", root_path, class: 'navbar-brand' %>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+    	  <li>
+    	    <%= link_to "Your Cart (#{current_cart.items.length})", cart_path(current_cart) %>
+    	  </li>
+    	  <li>
+    	    <%= link_to 'Profile', user_path(current_user) %>
+    	  </li>
+        <li>
+          <%= link_to "New Store", new_store_path %>
+        </li>
+    	<% else %>
+    	  <li>
+ 		    <%= link_to 'Sign In', new_user_session_path %>
+ 		  </li>
+		<% end %>
+	  </ul>
+  </div>
+</nav>

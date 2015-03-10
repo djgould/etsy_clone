@@ -11,12 +11,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130021758) do
+ActiveRecord::Schema.define(version: 20150203144942) do
+
+  create_table "carts", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "cart_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "quantity",   default: 0
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "shipping_address_id"
+    t.integer  "cart_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "products", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "store_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "price",       precision: 8, scale: 2
+  end
+
+  create_table "shipping_addresses", force: true do |t|
+    t.integer  "user_id"
+    t.string   "full_name"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "country"
+    t.string   "phone_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

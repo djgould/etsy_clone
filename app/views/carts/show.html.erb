@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+	<div class="list-group">
+      <% @items.each do |item| %>
+        <div class="list-group-item">
+          <div class="row">
+	          <div class="col-md-3">
+	          	<h1 class="list-group-item-heading"><%= link_to item.name, product_path(item.product) %></h1>
+	          </div>
+	          <div class="col-md-3">
+	          	<p class="list-group-item-text"><%= item.description %></p>
+	          </div>
+	          <div class="col-md-2">
+	            <p class="list-group-item-text"><%= number_to_currency(item.price) %></p>
+	          </div>
+	          <div class="col-md-2">
+	            <p class="list-group-item-text"><%= item.quantity %></p>
+	          </div>
+	          <div class="col-md-2">
+	            <p class="list-group-item-text"><%= number_to_currency(item.total) %></p>
+	          </div>
+	       </div>
+        </div>
+      <% end %>
+	</div>
+	  <div class="list-group">
+		<div class="list-group-item">
+		  <div class="row">
+			  <div class="col-md-2 col-md-offset-7">
+			    <h1 class="list-group-item-heading">Total:</h1>
+			  </div>
+			  <div class="col-md-3">
+				<p class="list-group-item-text"><%= number_to_currency(@cart.total) %></p>
+			  </div>
+			</div>
+		</div>
+	  </div>
+	</div>
+	<div class="btn btn-success">
+	 <%= link_to 'Checkout', new_shipping_address_path %>
+	</div>
+</div>

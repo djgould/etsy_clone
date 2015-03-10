@@ -1,19 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+ <div class="row">
+   <div class="col-md-3">
+	<h1><%= @product.name %></h1>
+	<h4><%= @product.price %></h4>
+	<p><%= @product.description %></p>
+	<ul class="list-group">
+	  <li class="list-group-item"><%= link_to 'Edit Product', edit_product_path(@product) %></li>
+	  <li class="list-group-item"><%= link_to 'Delete Product', products_path(@product), method: :delete %></li>
+   </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Store:</strong>
-  <%= @product.store_id %>
-</p>
+<%= link_to 'Add to Cart', add_to_cart_path(product_id: @product), method: :post, class: 'btn btn-success' %></p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

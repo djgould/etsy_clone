@@ -1,6 +1,21 @@
-<%= link_to 'Home', root_path %>
-<h1><%= @store.name %></h1>
-<p><%= @store.description %></p>
-<%= link_to 'Add Product', new_store_product_path(@store) %>
-<%= link_to 'Edit Store', edit_store_path(@store) %>
-<%= link_to 'Delete Store', store_path(@store), method: :delete %>
+<div class="container">
+ <div class="row">
+   <div class="col-md-3">
+	<h1><%= @store.name %></h1>
+	<p><%= @store.description %></p>
+	<ul class="list-group">
+	  <li class="list-group-item"><%= link_to 'Add Product', new_store_product_path(@store) %></li>
+	  <li class="list-group-item"><%= link_to 'Edit Store', edit_store_path(@store) %></li>
+	  <li class="list-group-item"><%= link_to 'Delete Store', store_path(@store), method: :delete %></li>
+   </div>
+   <div class="col-md-9">
+	   <div class="list-group">
+	     <% @store.products.each do |product| %>
+	       <div class="list-group-item">
+	          <h1 class="list-group-item-heading"><%= link_to product.name, product_path(product) %></h1>
+	          <p class="list-group-item-text"><%= product.description %></p>
+	       </div>
+	     <% end %>
+	  </div>
+	</div>
+</div>

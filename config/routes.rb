@@ -1,12 +1,25 @@
 Rails.application.routes.draw do
-	resources :products
-	
   devise_for :users
+
+  resources :products
+  resources :carts
+  
 	resources :stores do
 		 resources :products
 	end
-	resources :users, only: [:show]
-	root 'stores#index'
+
+	resources :users, only: [:show] do
+    resources :carts 
+  end
+
+  resources :shipping_addresses do
+    resources :orders, only: [:new, :create]
+  end
+  
+  resources :orders, only: [:show]
+	root 'products#index'
+
+  post 'products/:product_id/add_to_cart' => 'items#create', as: 'add_to_cart'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

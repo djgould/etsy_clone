@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
+
+Stripe.setPublishableKey('pk_test_Ft9TXsHCEKFoTY2WY71MTpzA');
