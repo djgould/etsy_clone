@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create]
   end
   
-  resources :orders, only: [:show]
+  resources :orders, only: [:show, :new]
 	root 'products#index'
 
   post 'products/:product_id/add_to_cart' => 'items#create', as: 'add_to_cart'

@@ -33,16 +33,16 @@ class OrdersController < ApplicationController
   	  @order.update_attributes(status: 'PAID')
       redirect_to @order
     end
-    rescue Stripe::CardError => e
-      @order.update_attributes(status: 'PAYMENT_FAILED')
-      flash[:alert] = e.message
-      redirect_to @order
-    end
-end
+  rescue Stripe::CardError
+    @order.update_attributes(status: 'PAYMENT_FAILED')
+    flash[:alert] = e.message
+    redirect_to @order
+  end
 
   def authorize
     @order = Order.find(params[:id])
     unless current_user == @order.user
       redirect_to current_cart
+    end
   end
 end
