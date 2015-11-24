@@ -21,6 +21,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def set_current_cart
     current_user
+  end
 
   # protected
 
